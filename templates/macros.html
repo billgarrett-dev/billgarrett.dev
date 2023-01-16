@@ -1,22 +1,13 @@
-{% macro experience_header(page, details) %}
-<div class="card experience-card">
-    <div class="card-content">
-        <p class="title is-4">{{ page.title }}</p>
-        <p class="subtitle is-6">
-            {{ page.extra.duties | default(value="No job title")}} -
-            {{ page.extra.years | default(value="No time range")}} -
-            {{ page.extra.location | default(value="No location")}}
-        </p>
-        {% if details %}
-        <div class="content">
-            {{ page.summary | safe}}
-        </div>
-        {% endif %}
+{% macro experience(page, details) %}
+<div class="block">
+    <p class="title is-4">{{ page.extra.title | default(value="No job title") }}</p>
+    <p class="subtitle is-6">
+        <strong>{{ page.extra.employer | default(value="No job employer")}}</strong> |
+        {{ page.extra.duration | default(value="No job duration")}} |
+        {{ page.extra.location | default(value="No job location")}}
+    </p>
+    <div class="content experience-text">
+        {{ page.summary | safe}}
     </div>
-    {% if details %}
-    <footer class="card-footer">
-        <a onClick="return onClickShowDetail({{page.permalink | json_encode()}})" class="card-footer-item">Details</a>
-    </footer>
-    {% endif %}
 </div>
-{% endmacro experience_header %}
+{% endmacro experience %}

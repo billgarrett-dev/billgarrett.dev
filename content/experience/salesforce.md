@@ -1,9 +1,10 @@
 +++
 title = "Salesforce (formerly Tableau)"
-weight = 2015
+weight = 1
 [extra]
-duties = "TODO"
-years = "2015 - 2023"
+employer = "Salesforce"
+title = "LTMS"
+duration = "2015 - 2023"
 location = "Seattle, WA"
 +++
 

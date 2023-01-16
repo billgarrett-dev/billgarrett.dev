@@ -8,27 +8,46 @@
     <div class="container">
       <div class="columns">
         <div class="column">
-          {% for sectionpath in section.subsections %}
-          {% set child = get_section(path=sectionpath, metadata_only=false) %}
-
-          <h2 class="title is-2">{{ child.title }}</h2>
-
-          {% for page in child.pages %}
-          {{ macros::experience_header(page=page, details=true) }} 
+          {% set experience = get_section(path="experience/_index.md") %}
+          {% for page in experience.pages %}
+          {{ macros::experience(page=page, details=false) }} 
           {% endfor %}        
-          {% endfor %}
         </div>
         <div class="column" id="detail-target">
-          <section class="hero is-info">
+          <section class="hero is-info block">
+            {% set page = get_page(path="links.md") %}
             <div class="hero-body">
               <h1 class="title">
-                BillGarrett.dev
+                {{ page.title }}
               </h1>
               <p class="subtitle">
-                Coming soon
-              </p>    
+                <a href="mailto:{{ page.extra.email }}">
+                  <span class="icon-text">
+                    <span class="icon">
+                      <i class="fa-sharp fa-solid fa-envelope"></i>
+                    </span>
+                    <span>{{ page.extra.email }}</span>
+                  </span>
+                </a>
+              </p>
+              {% for link in page.extra.links %}
+              <p>
+                <a href="{{ link.url }}">
+                  <span class="icon-text">
+                    <span class="icon">
+                      <i class="{{ link.icon }}"></i>
+                    </span>
+                    <span>{{ link.text }}</span>
+                  </span>  
+                </a>
+              </p>
+              {% endfor %}
             </div>
           </section>
+          {% set page = get_page(path="skills.md") %}
+          <div class="content">
+            {{ page.content | safe }}
+          </div>
         </div>
       </div>
     </div>
