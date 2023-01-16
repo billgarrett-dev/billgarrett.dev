@@ -1,0 +1,9 @@
+{% macro experience_header(page, content) %}
+<h3>{{ page.title }}</h3>
+<h4 class="subtitle">
+  {{ page.extra.duties | default(value="No job title")}} -
+  {{ page.extra.years | default(value="No time range")}} -
+  {{ page.extra.location | default(value="No location")}}
+</h4>
+{{ content | safe}}
+{% endmacro experience_header %}

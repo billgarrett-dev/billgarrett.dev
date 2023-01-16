@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block content %}
 
@@ -11,6 +12,22 @@
       <p class="subtitle">
         Coming soon
       </p>
+
+      <div class="content">
+        {% for sectionpath in section.subsections %}
+        {% set child = get_section(path=sectionpath, metadata_only=false) %}
+  
+        <h2>{{ child.title }}</h2>
+  
+        {% for page in child.pages %}
+  
+        {{ macros::experience_header(page=page, content=page.summary) }} 
+
+        {% endfor %}
+      
+        {% endfor %}
+  
+      </div>
     </div>
   </section>
 </div>
