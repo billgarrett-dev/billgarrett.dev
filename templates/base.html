@@ -9,13 +9,13 @@
     <link rel="stylesheet" type="text/css" href="/application.css" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% block rss %}
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path=" rss.xml", trailing_slash=false)
-        }}">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path=" rss.xml", trailing_slash=false)}}">
     {% endblock %}
 </head>
 
 <body>
     {% block content %} {% endblock %}
+    <script src="/application.js"></script>
 </body>
 
 </html>

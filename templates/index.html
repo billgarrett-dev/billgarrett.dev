@@ -6,27 +6,30 @@
 <div class="row">
   <section class="section">
     <div class="container">
-      <h1 class="title">
-        BillGarrett.dev
-      </h1>
-      <p class="subtitle">
-        Coming soon
-      </p>
+      <div class="columns">
+        <div class="column">
+          {% for sectionpath in section.subsections %}
+          {% set child = get_section(path=sectionpath, metadata_only=false) %}
 
-      <div class="content">
-        {% for sectionpath in section.subsections %}
-        {% set child = get_section(path=sectionpath, metadata_only=false) %}
-  
-        <h2>{{ child.title }}</h2>
-  
-        {% for page in child.pages %}
-  
-        {{ macros::experience_header(page=page, content=page.summary) }} 
+          <h2 class="title is-2">{{ child.title }}</h2>
 
-        {% endfor %}
-      
-        {% endfor %}
-  
+          {% for page in child.pages %}
+          {{ macros::experience_header(page=page, details=true) }} 
+          {% endfor %}        
+          {% endfor %}
+        </div>
+        <div class="column" id="detail-target">
+          <section class="hero is-info">
+            <div class="hero-body">
+              <h1 class="title">
+                BillGarrett.dev
+              </h1>
+              <p class="subtitle">
+                Coming soon
+              </p>    
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   </section>

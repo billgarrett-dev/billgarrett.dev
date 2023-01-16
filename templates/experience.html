@@ -1,6 +1,7 @@
 {% import "macros.html" as macros %}
 
 <div class="content">
-    {{ macros::experience_header(page=page, content=page.content) }}
+    {{ macros::experience_header(page=page, details=false) }}
+    {{ page.content | safe }}
   </div>
 </div>

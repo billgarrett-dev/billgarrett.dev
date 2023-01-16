@@ -12,4 +12,5 @@ location = "Redmond, WA"
 
 <!-- more -->
 
+
 I did stuff at Microsoft.

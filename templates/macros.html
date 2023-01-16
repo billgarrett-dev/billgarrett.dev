@@ -1,9 +1,22 @@
-{% macro experience_header(page, content) %}
-<h3>{{ page.title }}</h3>
-<h4 class="subtitle">
-  {{ page.extra.duties | default(value="No job title")}} -
-  {{ page.extra.years | default(value="No time range")}} -
-  {{ page.extra.location | default(value="No location")}}
-</h4>
-{{ content | safe}}
+{% macro experience_header(page, details) %}
+<div class="card experience-card">
+    <div class="card-content">
+        <p class="title is-4">{{ page.title }}</p>
+        <p class="subtitle is-6">
+            {{ page.extra.duties | default(value="No job title")}} -
+            {{ page.extra.years | default(value="No time range")}} -
+            {{ page.extra.location | default(value="No location")}}
+        </p>
+        {% if details %}
+        <div class="content">
+            {{ page.summary | safe}}
+        </div>
+        {% endif %}
+    </div>
+    {% if details %}
+    <footer class="card-footer">
+        <a onClick="return onClickShowDetail({{page.permalink | json_encode()}})" class="card-footer-item">Details</a>
+    </footer>
+    {% endif %}
+</div>
 {% endmacro experience_header %}
