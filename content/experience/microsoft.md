@@ -19,4 +19,4 @@ Develop solutions for Windows Live Messenger and MSN Mobile teams. Provide suppo
 
 <!-- more -->
 
-I did stuff at Microsoft.
+More content.

@@ -18,4 +18,4 @@ Develop customer facing and internal tools for a startup domain sales business w
 
 <!-- more -->
 
-I did stuff at Marchex.
+More content.
