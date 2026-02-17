@@ -1,0 +1,14 @@
+---
+import type { InferEntrySchema } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { compose, reverse, sortBy } from 'ramda';
+
+import Employer from './employer.astro';
+
+const byStartDate = compose((employer: { id: string, data: InferEntrySchema<"employers">}) => employer.data.startDate)
+
+const employersUnsorted = await getCollection('employers');
+const employers = reverse(sortBy(byStartDate)(employersUnsorted));
+---
+
+{employers.map(employer => <Employer id={employer.id} />)}

@@ -1,0 +1,39 @@
+---
+import { getEntry } from 'astro:content';
+import dayjs from 'dayjs';
+
+interface Props {
+  id: string;
+}
+
+function dateToResumeStyle(dateValue: Date | undefined): string {
+  return dateValue ? dayjs(dateValue).format(`MMM YYYY`) : 'Current'
+}
+
+const { id } = Astro.props;
+const employer = await getEntry('employers', id);
+if (!employer) {
+  throw new Error(`No such employer: ${id}`);
+}
+---
+
+<h5>
+  <span>
+    {employer.data.employer}
+  </span>
+  <span class="daterange">
+    {dateToResumeStyle(employer.data.startDate)} - {dateToResumeStyle(employer.data.endDate)}
+  </span>
+</h5>
+
+<p>
+  <ul>
+    {employer.data.duties.map(duty => <li>{duty}</li>)}
+  </ul>
+</p>
+
+<style>
+  span.daterange {
+    float: right;
+  }
+</style>
