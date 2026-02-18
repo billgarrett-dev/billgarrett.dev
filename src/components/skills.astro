@@ -1,0 +1,16 @@
+---
+import type { InferEntrySchema } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { compose, sortBy } from 'ramda';
+
+const byName = compose((skill: { id: string, data: InferEntrySchema<"skills">}) => skill.id)
+
+const skillsUnsorted = await getCollection('skills', ({data}) => !data.hidden);
+const skills = sortBy(byName)(skillsUnsorted);
+---
+
+{skills.map(skill =>
+  <p>
+    <strong>{skill.id}</strong>: {skill.data.skills.join(', ')}
+  </p>
+)}

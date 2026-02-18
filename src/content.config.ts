@@ -33,7 +33,7 @@ const skills = defineCollection({
   loader: file("src/data/skills.yaml"),
   schema: z.object({
     hidden: z.boolean().optional(),
-    name: z.string()
+    skills: z.array(z.string())
   })
 })
 
