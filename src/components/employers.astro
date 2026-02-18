@@ -7,7 +7,7 @@ import Employer from './employer.astro';
 
 const byStartDate = compose((employer: { id: string, data: InferEntrySchema<"employers">}) => employer.data.startDate)
 
-const employersUnsorted = await getCollection('employers');
+const employersUnsorted = await getCollection('employers', ({data}) => !data.hidden);
 const employers = reverse(sortBy(byStartDate)(employersUnsorted));
 ---
 

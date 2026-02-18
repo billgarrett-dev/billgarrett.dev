@@ -5,6 +5,7 @@ import { z } from 'astro/zod';
 const education = defineCollection({
   loader: file("src/data/education.yaml"),
   schema: z.object({
+    hidden: z.boolean().optional(),
     name: z.string(),
     location: z.string().optional(),
     url: z.string().url().optional(),
@@ -15,8 +16,9 @@ const education = defineCollection({
 })
 
 const employers = defineCollection({
-  loader: glob({pattern: '**/*.md*', base: './src/employers'}),
+  loader: glob({pattern: '**/*.md*', base: './src/data/employers'}),
   schema: z.object({
+    hidden: z.boolean().optional(),
     name: z.string(),
     location: z.string().optional(),
     url: z.string().url().optional(),
@@ -30,6 +32,7 @@ const employers = defineCollection({
 const skills = defineCollection({
   loader: file("src/data/skills.yaml"),
   schema: z.object({
+    hidden: z.boolean().optional(),
     name: z.string()
   })
 })
