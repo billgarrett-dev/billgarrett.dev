@@ -1,6 +1,8 @@
 ---
 import DefaultLayout from '@/layouts/DefaultLayout.astro'
+import Schools from '@/components/schools.astro'
 import Employers from '@/components/employers.astro'
+import Skills from '@/components/skills.astro'
 ---
 
 <DefaultLayout>
@@ -10,7 +12,11 @@ import Employers from '@/components/employers.astro'
       <Employers />
     </div>
     <div>
-      <h1>Coming Soon</h1>
+      <h4>Skills</h4>
+      <Skills />
+
+      <h4>Education</h4>
+      <Schools />
     </div>
   </div>
 </DefaultLayout>
