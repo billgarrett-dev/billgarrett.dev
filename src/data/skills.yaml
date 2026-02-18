@@ -1,3 +1,22 @@
-- id: Languages
+- id: Languages and Frameworks
   skills:
+    - Bash
     - Java
+    - Javascript/Typescript
+    - Python
+    - React
+    - Spring Boot
+- id: Testing
+  skills:
+    - Jest
+    - JUnit
+    - Selenium
+- id: Databases
+  skills:
+    - Postgres
+    - Elastic
+- id: CI/CD
+  skills:
+    - Git
+    - Maven
+    - Vite
