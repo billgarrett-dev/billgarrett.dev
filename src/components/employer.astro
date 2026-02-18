@@ -17,14 +17,17 @@ if (!employer) {
 }
 ---
 
-<h5>
-  <span>
-    {employer.data.name}
-  </span>
-  <span class="daterange">
-    {dateToResumeStyle(employer.data.startDate)} - {dateToResumeStyle(employer.data.endDate)}
-  </span>
-</h5>
+<hgroup>
+  <h5>
+    <span>
+      {employer.data.title}
+    </span>
+    <span class="daterange">
+      {dateToResumeStyle(employer.data.startDate)} - {dateToResumeStyle(employer.data.endDate)}
+    </span>
+  </h5>
+  <p><strong>{employer.data.name}</strong>, {employer.data.location || "Remote"}</p>
+</hgroup>
 
 <p>
   <ul>
