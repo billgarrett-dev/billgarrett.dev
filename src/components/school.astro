@@ -1,0 +1,40 @@
+---
+import { getEntry } from 'astro:content';
+import dayjs from 'dayjs';
+
+interface Props {
+  id: string;
+}
+
+function dateToResumeStyle(dateValue: Date | undefined): string {
+  return dateValue ? dayjs(dateValue).format(`MMM YYYY`) : 'Current'
+}
+
+const { id } = Astro.props;
+const school = await getEntry('education', id);
+if (!school) {
+  throw new Error(`No such school: ${id}`);
+}
+---
+
+<hgroup>
+  <h5>
+    <span>
+      {school.data.name}
+    </span>
+    <span class="daterange">
+      {dateToResumeStyle(school.data.startDate)} - {dateToResumeStyle(school.data.endDate)}
+    </span>
+  </h5>
+  {school.data.location && <p><small>{school.data.location}</small></p>}
+</hgroup>
+<p>
+  
+  {school.data.topics && <span>{school.data.topics}</span>}
+</p>
+
+<style>
+  span.daterange {
+    float: right;
+  }
+</style>

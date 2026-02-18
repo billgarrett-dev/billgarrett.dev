@@ -1,0 +1,14 @@
+---
+import type { InferEntrySchema } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { compose, reverse, sortBy } from 'ramda';
+
+import School from './school.astro';
+
+const byStartDate = compose((school: { id: string, data: InferEntrySchema<"education">}) => school.data.startDate)
+
+const educationUnsorted = await getCollection('education', ({data}) => !data.hidden);
+const education = reverse(sortBy(byStartDate)(educationUnsorted));
+---
+
+{education.map(school => <School id={school.id} />)}
